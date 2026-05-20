@@ -1,0 +1,38 @@
+name: Generate 3D Contribution Calendar
+
+on:
+  schedule:
+    - cron: "0 18 * * *"   # runs every day at midnight IST (6pm UTC)
+  workflow_dispatch:         # allows manual trigger from GitHub UI
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Generate 3D Contribution Graph
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Generate 3D Contribution Calendar
+        uses: yoshi389111/github-profile-3d-contrib@0.7.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USERNAME: ${{ github.repository_owner }}
+          SETTING_JSON: |
+            {
+              "githubUserName": "${{ github.repository_owner }}",
+              "type": "GitHubNormal",
+              "backgroundColor": "#0d1117",
+              "foregroundColor": "#FF9900",
+              "strongColor": "#FF9900",
+              "weekLabelColor": "#FF9900",
+              "monthLabelColor": "#aaaaaa"
+            }
+
+      - name: Commit & Push 3D Calendar Image
+        uses: EndBug/add-and-commit@v7
+        with:
+          add: "profile-3d-contrib/"
+          message: "🤖 auto-update: 3D contribution calendar"
