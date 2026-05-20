@@ -20,16 +20,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
-          SETTING_JSON: |
-            {
-              "githubUserName": "${{ github.repository_owner }}",
-              "type": "GitHubNormal",
-              "backgroundColor": "#0d1117",
-              "foregroundColor": "#FF9900",
-              "strongColor": "#FF9900",
-              "weekLabelColor": "#FF9900",
-              "monthLabelColor": "#aaaaaa"
-            }
+          SETTING_JSON: '{"githubUserName":"${{ github.repository_owner }}","type":"GitHubNormal","backgroundColor":"#0d1117","foregroundColor":"#FF9900","strongColor":"#FF9900","weekLabelColor":"#FF9900","monthLabelColor":"#aaaaaa"}'
 
       - name: Commit & Push 3D Calendar Image
         uses: EndBug/add-and-commit@v7
