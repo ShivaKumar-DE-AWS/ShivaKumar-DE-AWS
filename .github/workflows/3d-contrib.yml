@@ -11,30 +11,16 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Generate 3D Contribution Graph
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v3
-
-      - name: Write settings file
-        run: |
-          cat > /tmp/settings.json << 'JSON'
-          {
-            "githubUserName": "ShivaKumar-DE-AWS",
-            "type": "GitHubNormal",
-            "backgroundColor": "#0d1117",
-            "foregroundColor": "#FF9900",
-            "strongColor": "#FF9900",
-            "weekLabelColor": "#FF9900",
-            "monthLabelColor": "#aaaaaa"
-          }
-          JSON
 
       - name: Generate 3D Contribution Calendar
         uses: yoshi389111/github-profile-3d-contrib@0.7.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
-          SETTING_JSON: /tmp/settings.json
 
       - name: Commit & Push 3D Calendar Image
         uses: EndBug/add-and-commit@v7
