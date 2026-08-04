@@ -242,7 +242,7 @@
 
 ```
 2025  ┌─────────────────────────────────────────────────────────────────┐
-      │ 🔶 Data Engineer @ Airgap Technology (Sep 2023 – Dec 2025)      │
+      │ 🔶 Data Engineer @ Airgap Technology (Sep 2023 – June 2026)      │
       │    • Automated ETL workflows → ~30% reduction in manual effort  │
       │    • Python data extraction + benchmarking report automation    │
       │    • Built engineering data repos with full lineage traceability │
